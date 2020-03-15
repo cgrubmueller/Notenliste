@@ -177,22 +177,38 @@ public class Schueler implements Comparable<Schueler>, Serializable {
 		this.gruppe = gruppe;
 	}
 	
+	/**
+	 * Diese Klasse gibt einen schön formatierten String aus, in dem alle Informationen,
+	 * die in der notenliste gespeichert sind, enthalten sind.
+	 * @return einen String
+	 */
 	public String notenListe() {
 		String temp = "";
 		if (!this.notenliste.isEmpty()) {
 			for (Gegenstaende gegenstand: this.notenliste.keySet()) {
-				temp = temp + gegenstand.toString() + ": " + this.notenliste.get(gegenstand) + "\n\r";
+				temp = temp + gegenstand.toString() + ": " + this.notenliste.get(gegenstand) + "\n";
 			}
 			return temp;
 		}
 		return "Die Notenliste ist leer.";
 	}
 	
+	/**
+	 * Diese Methode gibt die Note zu dem im Parameter übergeben gegenstand zurück.
+	 * Falls der Gegenstand in der Notenliste nicht existiert, wird -1 zurückgegeben.
+	 * @param gegenstand ist der Gegenstand zu dem die Note ausgegeben wird.
+	 * @return gibt die Note zu dem Gegenstand aus. Falls dieser nicht existiert, wird -1 zurückgegeben.
+	 */
 	public int note(Gegenstaende gegenstand) {
 		if (!this.notenliste.isEmpty()) return this.notenliste.get(gegenstand);
 		return -1;
 	}
 	
+	/**
+	 * Diese Methode fügt einen Noteneintrag in der Notenliste hinzu.
+	 * @param gegenstand ist der Gegenstand für den die Note hinzugefügt wird.
+	 * @param note ist die note die für den Gegenstand hinzugefügt wird.
+	 */
 	public void noteHinzu(Gegenstaende gegenstand, int note) {
 		this.notenliste.put(gegenstand, note);
 	}

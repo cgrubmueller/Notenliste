@@ -54,5 +54,16 @@ public class Test {
 		System.out.println("Igor Filipovic wird aus der Emailliste gelöscht");
 		e1.delSchueler(s3);
 		System.out.println(e1.toString() + '\n');
+		System.out.println();
+		System.out.println("******Nontenliste test*****");
+		System.out.println("Noten werden hinzugefügt");
+		s3.noteHinzu(Gegenstaende.SEW, 4);
+		s3.noteHinzu(Gegenstaende.AM, 4);
+		s3.noteHinzu(Gegenstaende.D, 2);
+		s3.noteHinzu(Gegenstaende.NWTK, 3);
+		s3.noteHinzu(Gegenstaende.SYT, 1);
+		System.out.println("Noten werden ausgegeben");
+		System.out.println(s3.notenListe());
+		System.out.println(s3.note(Gegenstaende.D));
 	}
 }
