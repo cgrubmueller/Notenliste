@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.*;
 
 /**
  * Diese Klasse soll die Daten eines Schülers speichern und ist für Collections optmiert.
@@ -12,11 +13,14 @@ public class Schueler implements Comparable<Schueler>, Serializable {
 	private String vorname, nachname;
 	private char gruppe;
 	
+	private Map<Gegenstaende, Integer> notenliste;
+	
 	public Schueler (int katalognummer, String vorname, String nachname, char gruppe) {
 		this.katalognummer = katalognummer;
 		this.vorname = vorname;
 		this.nachname = nachname;
 		this.gruppe = gruppe;
+		this.notenliste = new HashMap<Gegenstaende, Integer>();
 	}
 	
 	/**
@@ -171,5 +175,25 @@ public class Schueler implements Comparable<Schueler>, Serializable {
 	 */
 	public void setGruppe(char gruppe) {
 		this.gruppe = gruppe;
+	}
+	
+	public String notenListe() {
+		String temp = "";
+		if (!this.notenliste.isEmpty()) {
+			for (Gegenstaende gegenstand: this.notenliste.keySet()) {
+				temp = temp + gegenstand.toString() + ": " + this.notenliste.get(gegenstand) + "\n\r";
+			}
+			return temp;
+		}
+		return "Die Notenliste ist leer.";
+	}
+	
+	public int note(Gegenstaende gegenstand) {
+		if (!this.notenliste.isEmpty()) return this.notenliste.get(gegenstand);
+		return -1;
+	}
+	
+	public void noteHinzu(Gegenstaende gegenstand, int note) {
+		this.notenliste.put(gegenstand, note);
 	}
 }

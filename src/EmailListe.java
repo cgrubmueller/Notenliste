@@ -75,24 +75,24 @@ public class EmailListe {
 	public String toString() {
 		StringBuilder temp = new StringBuilder();
 			if (!this.emailliste.isEmpty()) {
-			for (Schueler cache1: this.emailliste.keySet()) {
-				//Schülername
-				temp.append(cache1.getVorname() + cache1.getNachname() + ": ");
-				//Email-Adressen
-				Iterator<String> it = this.emailliste.get(cache1).iterator();
-				String cache2 = "";
-				while (it.hasNext()) {
-					cache2 = it.next();
-					if (it.hasNext()) {
-						temp.append(cache2 + ", ");
-					} else {
-						temp.append(cache2);
+				for (Schueler cache1: this.emailliste.keySet()) {
+					//Schülername
+					temp.append(cache1.getVorname() + cache1.getNachname() + ": ");
+					//Email-Adressen
+					Iterator<String> it = this.emailliste.get(cache1).iterator();
+					String cache2 = "";
+					while (it.hasNext()) {
+						cache2 = it.next();
+						if (it.hasNext()) {
+							temp.append(cache2 + ", ");
+						} else {
+							temp.append(cache2);
+						}
 					}
+					//Zeilenumbruch
+					temp.append("\r\n");
 				}
-				//Zeilenumbruch
-				temp.append("\r\n");
-			}
-			return temp.toString();
+				return temp.toString();
 		}
 		return "isEmpty";
 	}
